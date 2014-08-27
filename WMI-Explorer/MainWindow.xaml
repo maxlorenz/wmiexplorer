@@ -1,0 +1,48 @@
+﻿<Window x:Class="WMI_Explorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WMI Explorer" Height="535.5" Width="868.675" Icon="Procedure_8937.ico">
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="lstNS" HorizontalAlignment="Left" Margin="10,10,0,10" Width="181" SelectionChanged="lstNS_DoubleClick" Foreground="Black" BorderBrush="White">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Namespace" Width="145"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="lstClasses" Margin="191,10,0,38" HorizontalAlignment="Left" Width="360" SelectionChanged="lstClasses_DoubleClick" Foreground="Black" BorderBrush="White">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Class" Width="320"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy query to clipboard" Click="CopyClassQueryToClipboard_Click" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <ListView x:Name="lstProperties" Margin="551,10,10,10" SizeChanged="lstProperties_SizeChanged" Foreground="Black" BorderBrush="White">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy query(s) to clipboard" Click="CopyPropertyQueryToClipboard_Click" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="196,0,0,10" TextWrapping="Wrap" Text="win32" VerticalAlignment="Bottom" Width="270"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="471,0,0,11" VerticalAlignment="Bottom" Width="75" Click="ButtonSearch_Click"/>
+
+    </Grid>
+</Window>
