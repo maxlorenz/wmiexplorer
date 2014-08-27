@@ -106,9 +106,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="computersystemproduct.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Procedure_8937.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
