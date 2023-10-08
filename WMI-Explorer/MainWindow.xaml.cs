@@ -53,11 +53,12 @@ namespace WMI_Explorer
             lstClasses.IsEnabled = false;
 
             string selectedClass = lstClasses.SelectedItem.ToString();
+            string scope = lstNS.SelectedItem.ToString();
 
             lstProperties.Items.Add(new TwoValueItem { Name = "Searching in " + selectedClass, Value = "" });
 
             Thread bgThread = new Thread(new ThreadStart((Action) (() => {
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * from " + selectedClass);
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(new ManagementScope("root\\" + scope),new ObjectQuery("Select * from " + selectedClass));
                 ManagementObjectCollection oc = searcher.Get();
 
                 List<TwoValueItem> results = new List<TwoValueItem>();
